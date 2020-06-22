@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+
+html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #a19b8e;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Ubuntu", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --font-size: calc(10px + 1vmin);
+}
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid green;
+}
+a {
+  margin: 20px;
+  text-decoration: none;
+  color: greenyellow;
+  border: 2px solid green;
+}
+a:hover {
+  color: aqua;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid green;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid green;
+}
+
+input {
+  margin: 20px;
+  border-radius: 5px;
+}
+label {
+  display: flex;
+  color: rgb(0, 0, 0);
+}
+p {
+  color: black;
+}
+button {
+}
