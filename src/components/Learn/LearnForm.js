@@ -45,6 +45,12 @@ export default class LearnForm extends React.Component{
             })
     }
 
+    sortWordsByMValue = () => {
+        // sort by ascending order of M value
+        // sortedWords = words.sort()
+    }
+
+
     handleSubmitGuess = (e) => {
         e.preventDefault()
         if(this.state.guess === this.state.currentWordTranslation) {

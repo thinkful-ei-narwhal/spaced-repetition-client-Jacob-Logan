@@ -8,8 +8,6 @@ class DashboardRoute extends Component {
     return (
       <section>
         <Dashboard />
-
-        implement and style me
       </section>
     );
   }

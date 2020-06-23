@@ -12,28 +12,24 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    console.log(this.context)
     return (
-      <div>
-        <h1>Learn {this.context.language.name}</h1>
-        <h3>Total score for {this.context.language.name}: {this.context.language.total_score}</h3>
+      <section>
+        <h2>Learn {this.context.language.name}</h2>
+        <h2>Total correct answers: {this.context.language.total_score}</h2>
         <Link to='/learn'>
-          <Button>
-            Start Practice
-        </Button>
+            Start practicing
         </Link>
         <div>
           <h3>Words to practice</h3>
-          <ul>
+          
             {this.context.words.map(word =>
-              <li key={word.id}>
-                <p>word: {word.original}</p>
-                <p>Times correct: {word.correct_count}</p>
-                <p>Times incorrect: {word.incorrect_count}</p>
-              </li>)}
-          </ul>
+              <ul key={word.id}>
+                <li><h4>{word.original}</h4> 
+                <br /> correct answer count: {word.correct_count} <br />
+                incorrect answer count: {word.incorrect_count}</li>
+              </ul>)}
         </div>
-      </div>
+      </section>
     )
   }
 }
