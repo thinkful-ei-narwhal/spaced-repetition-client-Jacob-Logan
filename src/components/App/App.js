@@ -27,6 +27,7 @@ export default class App extends Component {
           {hasError && (
             <p>There was an error! Oh no!</p>
           )}
+
           <Switch>
             <PrivateRoute
               exact

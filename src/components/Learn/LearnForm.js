@@ -18,9 +18,7 @@ export default class LearnForm extends React.Component {
 
 
     //TODO: 
-    // INSTEAD OF DISPLAYING FIRST WORD IN THE LIST NEED TO CREATE A LINKED LIST TO GRAB 
-    // THE CORRECT WORD BASED OFF OF ALGORITHM CRITERIA
-    // SO LANGUAGESERVICE.GETCORRECTWORD WILL NEED TO BE CHANGED COMPLETELY 
+
 
 
     guessInput = React.createRef()
@@ -28,10 +26,9 @@ export default class LearnForm extends React.Component {
     state = {
         guess: '',
         currentWord: '',
-        currentWordTranslation: '',
+        answer: '',
         words: [],
-        isRight: false,
-        isWrong: false,
+        isCorrect: null,
         nextWord: null,
         totalScore: null,
         wordCorrectCount: null,
@@ -51,29 +48,21 @@ export default class LearnForm extends React.Component {
             })
     }
 
-    sortWordsByMValue = () => {
-        // sort by ascending order of M value
-        // sortedWords = words.sort()
-    }
-
-
     handleSubmitGuess = (e) => {
         e.preventDefault()
-        if (this.state.guess === this.state.currentWordTranslation) {
-            //binary = 1 means right answer
-            const binary = 1
-            languageService.submitGuess(binary, this.state.currentWordId)
-            console.log('CORRECT')
-            this.setState({ isRight: true })
-        }
-        else {
-            //with binary = 0 this means wrong annswer
-            const binary = 0
-            languageService.submitGuess(binary, this.state.currentWordId)
-            console.log('XXX')
-            this.setState({ isWrong: true })
+        this.setState({ currentWord: this.state.nextWord })
 
-        }
+        languageService.submitGuess(this.state.guess)
+            .then(res => this.setState({
+                answer: res.answer,
+                isCorrect: res.isCorrect,
+                nextWord: res.nextWord,
+                totalScore: res.totalScore,
+                wordCorrectCount: res.wordCorrectCount,
+                wordIncorrectCount: res.wordIncorrectCount
+            }))
+
+        // this.setState({ icCorrect: true })
     }
 
     setInputVal = (e) => {
@@ -84,25 +73,45 @@ export default class LearnForm extends React.Component {
     }
 
     render() {
-        console.log(this.state.guess, this.state.currentWordTranslation)
-        console.log(this.state.correctWordCount)
+        // console.log(this.state.guess, this.state.currentWordTranslation)
+        // console.log(this.state.correctWordCount)
         return (
             <div>
-                <h2>Translate the word:</h2>
-                <span>{this.state.nextWord}</span>
-                <p>Your total score is: {this.state.totalScore}</p>
-                <div>
-                    {this.state.currentWord}
+
+
+                {
+                    (this.state.isCorrect === true) ? <h2>You were correct! &#58;D</h2> && <p>Your total score is: {this.state.totalScore}</p>
+                        :
+                        (this.state.isCorrect === false) ? <h2>Good try, but not quite right &#58;&#x28;</h2>
+                            :
+                            (this.state.isCorrect === null) ? <h2>Translate the word&#58;</h2> : <div></div>}
+
+                <div className="DisplayFeedback">
+                    {(this.state.isCorrect === false) ? <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.guess}!</p>
+                        :
+                        (this.state.isCorrect === true) ? <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.guess}!</p>
+                            : <p></p>
+                    }
                 </div>
+
+                <span>{this.state.nextWord}</span>
+                <div className="DisplayScore">
+                    {(this.state.currentWord !== '') ? <p>Your total score is: {this.state.totalScore}</p> : <p></p>}
+                </div>
+
+
+                <h2>Translate the word&#58;</h2> {this.state.currentWord}
+
                 <form onSubmit={(e) => this.handleSubmitGuess(e)}>
                     <Label htmlFor='learn-guess-input'>
                         What's the translation for this word?
                     </Label>
                     <Input id='learn-guess-input' type='text' placeholder='eg. hello' required onChange={(e) => this.setInputVal(e)} />
                     <Button type='submit'>Submit your answer</Button>
+                    {/* <Button type='submit'>Try another word!</Button> */}
                 </form>
-                {(this.state.isRight) ? <div> Nice Job </div> : ''}
-                {(this.state.isWrong) ? <div> Oops try again </div> : ''}
+
+
                 You have answered this word correctly {this.state.wordCorrectCount} times.
                 You have answered this word incorrectly {this.state.wordIncorrectCount} times.
 
