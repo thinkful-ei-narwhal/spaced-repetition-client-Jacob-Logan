@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import LanguageContext from '../../contexts/LanguageContext'
 
 import { Link } from 'react-router-dom';
+import './Dashboard.css'
 export default class Dashboard extends Component {
   static contextType = LanguageContext;
 
@@ -12,7 +13,7 @@ export default class Dashboard extends Component {
 
   render() {
     return (
-      <section>
+      <section className = 'dashboard-section'>
         <h2>Learn {this.context.language.name}</h2>
         <h2>Total correct answers: {this.context.language.total_score}</h2>
         <Link to='/learn'>
