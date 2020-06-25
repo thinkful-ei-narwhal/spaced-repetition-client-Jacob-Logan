@@ -49,9 +49,7 @@ export default class LearnForm extends React.Component {
                 wordIncorrectCount: res.wordIncorrectCount,
                 submitted: true,
             }))
-            .then(() => {
-                this.setState({ guess: ''})
-            })
+
     }
 
     setInputVal = (e) => {
