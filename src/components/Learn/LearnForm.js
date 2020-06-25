@@ -46,7 +46,7 @@ export default class LearnForm extends React.Component {
                 totalScore: res.totalScore,
                 wordCorrectCount: res.wordCorrectCount,
                 wordIncorrectCount: res.wordIncorrectCount,
-                submitted: true
+                submitted: true,
             }))
     }
 
@@ -63,17 +63,25 @@ export default class LearnForm extends React.Component {
         languageService.getCurrentWord()
             .then(res => {
                 this.setState({
-                    nextWord: res.nextWord,
-                    totalScore: res.totalScore,
                     wordCorrectCount: res.wordCorrectCount,
                     wordIncorrectCount: res.wordIncorrectCount,
-                    submitted: false
+                    submitted: false,
                 })
+            
             })
     }
 
+    renderButton = () => {
+        if(this.state.submitted) {
+            return <Button onClick = {(e) => this.nextWord(e)}>Try another word!</Button>
+        }
+        else {
+            return <Button type='submit'>Submit your answer</Button>
+        }
+    }
+
     render() {
-        console.log(this.state.submitted)
+        console.log('submitted', this.state.guess)
         return (
             <div> 
                 {
@@ -85,9 +93,9 @@ export default class LearnForm extends React.Component {
                 }
                 <div className="DisplayFeedback">
                     {
-                        (this.state.submitted && this.state.isCorrect)   
+                        (this.state.submitted)   
                             ? <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.guess}!</p>
-                            : <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.guess}!</p>
+                            : ''
                     }
                 </div>
                 <span>{this.state.nextWord}</span>
@@ -100,9 +108,7 @@ export default class LearnForm extends React.Component {
                         What's the translation for this word?
                     </Label>
                     <Input id='learn-guess-input' type='text' placeholder='eg. hello' required onChange={(e) => this.setInputVal(e)} />
-                    {(this.state.submitted) 
-                        ? <Button onSubmit = {(e) => this.nextWord(e)}>Try another word!</Button> 
-                        : <Button type='submit'>Submit your answer</Button> }
+                    {this.renderButton()}
                 </form>
 
 
