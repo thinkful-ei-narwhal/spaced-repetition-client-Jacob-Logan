@@ -4,21 +4,10 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: #73c7ad;
+  justify-content: space-between;
+  background-color:#616161;
 }
-#root {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  justify-content: center;
-}
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  justify-content: center;
-}
+
 body {
   margin: 0;
   padding: 0;
@@ -28,46 +17,65 @@ body {
 }
 
 :root {
-  --font-size: calc(10px + 1vmin);
+  --font-size: calc(30px + 2vmin);
 }
-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  /* border: 2px solid #7A3E2F; */
-}
-/* a {
+
+a {
   margin: 20px;
   text-decoration: none;
-  color: #7A3E2F;
-  border: 2px solid #7A3E2F;
-} */
-a:hover {
-  color: aqua;
+  color: #F2F2F2;
 }
-/* nav {
-  display: flex;
-  flex-direction: row;
-  border: 2px solid #7A3E2F;
-} */
+
+
+h2 {
+  text-align: center;
+  color: black;
+  border-bottom: 2px solid white;
+  padding-bottom: 10px;
+}
 
 .learn-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #7a3e2f;
+  text-align: center;
+  border: 2px solid #F2F2F2;
+  color: black;
+  border-radius: 6px;
+  padding: 40px;
+  background-color: #f2f2f2;
+  max-width: 400px;
+}
+.currentWord {
+  font-weight: 600;
+  color: #7a7171;
+}
+button {
+  display: border-box;
+  border: 2px solid white;
+  background: #75B1F5;
+  padding: 10px;
+  margin-bottom: 10px;
+
+}
+
+button:hover {
+  border: 2px solid #75B1F5;
+  background: white;
+  color: black;
+  padding: 10px;
+  cursor: pointer;
 }
 
 input {
+  font-size: 1em;
   margin: 20px;
-  border-radius: 5px;
+  padding: 10px;
+  text-align: left;
+  border-radius: 4px
+
 }
 label {
-  display: flex;
-  color: rgb(0, 0, 0);
+  margin: 20px;
+  padding: 20px;
 }
-p {
-  color: black;
-}
+

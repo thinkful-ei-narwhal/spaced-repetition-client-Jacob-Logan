@@ -108,7 +108,7 @@ export default class LearnForm extends React.Component {
                             : ''
                     }
                 </div>
-                <span>{this.state.nextWord}</span>
+                <span className = 'currentWord'>{this.state.nextWord}</span>
                 <div className="DisplayScore">
                     <p>Your total score is: {this.state.totalScore}</p>
                 </div>

@@ -16,7 +16,7 @@ export default class Dashboard extends Component {
       <section className = 'dashboard-section'>
         <h2>Learn {this.context.language.name}</h2>
         <h2>Total correct answers: {this.context.language.total_score}</h2>
-        <Link to='/learn'>
+        <Link to='/learn' className = 'startpracticing'>
           Start practicing
         </Link>
         <div>

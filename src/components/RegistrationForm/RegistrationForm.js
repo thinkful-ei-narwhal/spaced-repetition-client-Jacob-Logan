@@ -40,7 +40,7 @@ class RegistrationForm extends Component {
   render() {
     const { error } = this.state
     return (
-      <form
+      <form className = 'registrationForm'
         onSubmit={this.handleSubmit}
       >
         <div role='alert'>

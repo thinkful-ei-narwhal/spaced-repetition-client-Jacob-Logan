@@ -3,5 +3,38 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #7A3E2F;
+    color: black;
+    border: 2px solid black;
+    background-color: #f6f6f6;
+}
+
+ul {
+    list-style-type: none;
+    border-bottom: 2px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    border-bottom: 2px solid black;
+    padding: 10px 10px 20px 10px;
+}
+
+h4 {
+    color: black;
+    font-weight: 600;
+}
+
+.startpracticing {
+    border: 2px solid white;
+    background: #75B1F5;
+    padding: 10px;
+}
+
+.startpracticing:hover {
+    border: 2px solid #75B1F5;
+    background: white;
+    color: black;
+    padding: 10px;
 }
