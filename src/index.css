@@ -5,7 +5,7 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #a19b8e;
+  background-color: #73C7AD;
 }
 #root {
   display: flex;
@@ -35,34 +35,30 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: 2px solid green;
+  /* border: 2px solid #7A3E2F; */
 }
-a {
+/* a {
   margin: 20px;
   text-decoration: none;
-  color: greenyellow;
-  border: 2px solid green;
-}
+  color: #7A3E2F;
+  border: 2px solid #7A3E2F;
+} */
 a:hover {
   color: aqua;
 }
-nav {
+/* nav {
   display: flex;
   flex-direction: row;
-  border: 2px solid green;
-}
-section {
+  border: 2px solid #7A3E2F;
+} */
+
+
+.learn-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid green;
+  border: 2px solid #7A3E2F;
 }
 
 input {
@@ -75,6 +71,4 @@ label {
 }
 p {
   color: black;
-}
-button {
 }

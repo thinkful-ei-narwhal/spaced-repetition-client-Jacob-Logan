@@ -32,6 +32,7 @@ export default class LearnForm extends React.Component {
                     wordIncorrectCount: res.wordIncorrectCount
                 })
             })
+
     }
 
     handleSubmitGuess = (e) => {
@@ -48,6 +49,9 @@ export default class LearnForm extends React.Component {
                 wordIncorrectCount: res.wordIncorrectCount,
                 submitted: true,
             }))
+            .then(() => {
+                this.setState({ guess: ''})
+            })
     }
 
     setInputVal = (e) => {
@@ -80,9 +84,19 @@ export default class LearnForm extends React.Component {
         }
     }
 
+    renderInput = () => {
+        if(!this.state.submitted) {
+            return  <Input value = {this.state.guess} autoFocus id='learn-guess-input' type='text' placeholder= 'translate the word' required onChange={(e) => this.setInputVal(e)} />
+        }
+        else {
+            return <> </>
+        }
+    }
+
     render() {
+        console.log('guess', this.state.guess)
         return (
-            <div> 
+            <div className = 'learn-form'> 
                 {
                  (this.state.submitted) 
                     ?  (this.state.isCorrect) 
@@ -106,11 +120,9 @@ export default class LearnForm extends React.Component {
                     <Label htmlFor='learn-guess-input'>
                         What's the translation for this word?
                     </Label>
-                    <Input id='learn-guess-input' type='text' placeholder='eg. hello' required onChange={(e) => this.setInputVal(e)} />
+                    {this.renderInput()}
                     {this.renderButton()}
                 </form>
-
-
                 You have answered this word correctly {this.state.wordCorrectCount} times.
                 You have answered this word incorrectly {this.state.wordIncorrectCount} times.
             </div>
