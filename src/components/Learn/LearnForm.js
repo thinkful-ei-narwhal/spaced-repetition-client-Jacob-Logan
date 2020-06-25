@@ -22,7 +22,6 @@ export default class LearnForm extends React.Component {
     }
 
     componentDidMount() {
-
         languageService.getCurrentWord()
             .then(res => {
                 this.setState({
@@ -46,7 +45,7 @@ export default class LearnForm extends React.Component {
                     totalScore: res.totalScore,
                     wordCorrectCount: res.wordCorrectCount,
                     wordIncorrectCount: res.wordIncorrectCount,
-                    submitted: true
+                    submitted: true,
                 }))
     }
 
@@ -69,9 +68,7 @@ export default class LearnForm extends React.Component {
                 })
 
             })
-
     }
-    //return h2 from the server?
 
     renderButton = () => {
         if (this.state.submitted) {
@@ -85,61 +82,36 @@ export default class LearnForm extends React.Component {
     render() {
         return (
             <div>
-                <div className="DisplayScore">
-                    <p>Your total score is&#58; {this.state.totalScore}</p>
-                </div>
                 {
-                    (this.state.isCorrect === null)
-                        ? <h2>Translate the word&#58;</h2> : <div></div>
+                    (this.state.submitted)
+                        ? (this.state.isCorrect)
+                            ? <h2>You were correct! &#58;D</h2>
+                            : <h2>Good try, but not quite right &#58;&#x28;</h2>
+                        : <h2>Translate the word:</h2>
                 }
-                {
-                    (this.state.isCorrect === false)
-                        ? <h2>Good try, but not quite right &#58;&#40;</h2> : <div></div>
-                }
-                {
-                    (this.state.nextWord !== this.state.currentWord && this.state.isCorrect === true)
-                        ? <h2>You were correct! &#58;D</h2> : <div></div>
-                }
-                {
-                    (this.state.nextWord === this.state.currentWord)
-                        ? <h2>Translate the word&#58;</h2> : <div></div>
-                }
-                {/* {
-                    (this.state.isCorrect === true)
-                        ? setTimeout(() => { return (<h2>You were correct! &#58;D</h2>) }, 1000) : <div></div>
-                } */}
-                <span>{this.state.nextWord}</span>
-
                 <div className="DisplayFeedback">
                     {
-                        (this.state.submitted === true && this.state.isCorrect === true)
+                        (this.state.submitted)
                             ? <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.guess}!</p>
-                            : <div></div>
-                    }
-                    {
-                        (this.state.submitted === true && this.state.isCorrect === false)
-                            ? <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.guess}!</p>
-                            : <div></div>
+                            : ''
                     }
                 </div>
-
+                <span>{this.state.nextWord}</span>
+                <div className="DisplayScore">
+                    <p>Your total score is: {this.state.totalScore}</p>
+                </div>
 
                 <form onSubmit={(e) => this.handleSubmitGuess(e)}>
                     <Label htmlFor='learn-guess-input'>
                         What's the translation for this word?
                     </Label>
-
                     <Input id='learn-guess-input' type='text' placeholder='eg. hello' required onChange={(e) => this.setInputVal(e)} />
-                    {
-                        (this.state.nextWord !== this.state.currentWord && this.state.submitted === true)
-                            ? <button type='submit'>Try another word!</button> :
-
-                            (this.state.nextWord === this.state.currentWord || this.state.submitted === false)
-                                ? <button Button type='submit'>Submit your answer</button> : <div></div>
-                    }
+                    {this.renderButton()}
                 </form>
-                You have answered this word correctly { this.state.wordCorrectCount} times.
-                You have answered this word incorrectly { this.state.wordIncorrectCount} times.
+
+
+                You have answered this word correctly {this.state.wordCorrectCount} times.
+                You have answered this word incorrectly {this.state.wordIncorrectCount} times.
             </div>
         )
     }
