@@ -64,16 +64,24 @@ export default class LearnForm extends React.Component {
         languageService.getCurrentWord()
             .then(res => {
                 this.setState({
-                    nextWord: res.nextWord,
-                    totalScore: res.totalScore,
                     wordCorrectCount: res.wordCorrectCount,
                     wordIncorrectCount: res.wordIncorrectCount,
-                    submitted: false
+                    submitted: false,
                 })
+
             })
 
     }
     //return h2 from the server?
+
+    renderButton = () => {
+        if (this.state.submitted) {
+            return <Button onClick={(e) => this.nextWord(e)}>Try another word!</Button>
+        }
+        else {
+            return <Button type='submit'>Submit your answer</Button>
+        }
+    }
 
     render() {
         return (
