@@ -2,7 +2,6 @@ import React from 'react'
 import { Input, Label } from '../Form/Form'
 import LanguageContext from '../../contexts/LanguageContext'
 import languageService from '../../services/languageService'
-import Button from '../Button/Button'
 export default class LearnForm extends React.Component {
 
     static contextType = LanguageContext
@@ -76,10 +75,10 @@ export default class LearnForm extends React.Component {
 
     renderButton = () => {
         if (this.state.submitted) {
-            return <Button onClick={(e) => this.nextWord(e)}>Try another word!</Button>
+            return <button onClick={(e) => this.nextWord(e)}>Try another word!</button>
         }
         else {
-            return <Button type='submit'>Submit your answer</Button>
+            return <button type='submit'>Submit your answer</button>
         }
     }
 
@@ -133,14 +132,11 @@ export default class LearnForm extends React.Component {
                     <Input id='learn-guess-input' type='text' placeholder='eg. hello' required onChange={(e) => this.setInputVal(e)} />
                     {
                         (this.state.nextWord !== this.state.currentWord && this.state.submitted === true)
-                            ? <Button type='submit'>Try another word!</Button> :
+                            ? <button type='submit'>Try another word!</button> :
 
                             (this.state.nextWord === this.state.currentWord || this.state.submitted === false)
-                                ? <Button Button type='submit'>Submit your answer</Button> : <div></div>
+                                ? <button Button type='submit'>Submit your answer</button> : <div></div>
                     }
-
-
-
                 </form>
                 You have answered this word correctly { this.state.wordCorrectCount} times.
                 You have answered this word incorrectly { this.state.wordIncorrectCount} times.
