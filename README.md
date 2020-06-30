@@ -1,11 +1,20 @@
 # Spaced Repetition Capstone
 
+## This App is designed to teach users a new language by using the Spaced repetition method.
+
+    The user can submit their guess at a new word and wether the word is right or wrong, an algorithm
+    determines where to put that word when it reorders the list of vocab words.
+    The algorithm pulls and rearranges data from the database using a linkedList datastructure which
+    was coded from scratch.
+
+### This app was designed to meet a set of predetermined Cypress Tests and Mocha tests for the backend.
+
 ## Setup
 
 To setup the application
 
 1. Fork and clone the project to your machine
-2. `npm install`. This will also install the application *Cypress.io* for running browser integration tests
+2. `npm install`. This will also install the application _Cypress.io_ for running browser integration tests
 
 The project expects you have the Spaced repetition API project setup and running on http://localhost:8000.
 

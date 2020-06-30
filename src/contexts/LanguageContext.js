@@ -22,7 +22,6 @@ export class LanguageProvider extends React.Component {
   }
 
   getLanguage = () => {
-    // console.log('test')
     languageService.getLanguages()
       .then((data) => this.setState({ language: data.language, words: data.words }))
   }

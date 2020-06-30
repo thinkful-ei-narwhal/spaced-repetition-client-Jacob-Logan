@@ -91,7 +91,6 @@ export default class LearnForm extends React.Component {
     }
 
     render() {
-        // console.log('guess', this.state.guess)
         return (
             <div className='learn-form'>
                 {
@@ -108,15 +107,23 @@ export default class LearnForm extends React.Component {
                             : ''
                     }
                 </div>
-                <span className = 'currentWord'>{this.state.nextWord}</span>
+                {
+                    (this.state.submitted === false)
+                        ? <span>{this.state.nextWord}</span> : ''
+                }
+
                 <div className="DisplayScore">
                     <p>Your total score is: {this.state.totalScore}</p>
                 </div>
 
                 <form onSubmit={(e) => this.handleSubmitGuess(e)}>
-                    <Label htmlFor='learn-guess-input'>
-                        What's the translation for this word?
-                    </Label>
+                    {
+                        (this.state.submitted === false)
+                            ? <Label htmlFor='learn-guess-input'>
+                                What's the translation for this word?
+                    </Label> : ''
+                    }
+
                     {this.renderInput()}
                     {this.renderButton()}
                 </form>
