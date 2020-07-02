@@ -67,6 +67,7 @@ export default class LearnForm extends React.Component {
                     wordCorrectCount: res.wordCorrectCount,
                     wordIncorrectCount: res.wordIncorrectCount,
                     submitted: false,
+                    guess: ''
                 })
 
             })
